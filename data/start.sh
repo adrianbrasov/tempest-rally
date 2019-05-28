@@ -34,4 +34,4 @@ source ~/.rally/openrc
 verify_start
 
 #generate report
-rally verify report --to /output/raport.html --uuid $uuid --type html
+rally verify report --to /output/report_$uuid.html --uuid $uuid --type html
