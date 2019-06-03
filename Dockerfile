@@ -12,6 +12,6 @@ RUN wget https://github.com/openstack/rally/archive/1.5.1.tar.gz &&\
     git clone https://git.openstack.org/openstack/tempest &&\
     pip install tempest &&\
     /bin/bash -c " . /rally_inst/bin/activate; pip install rally-openstack; \
-    rally verify create-verifier --type tempest --name tempest-verifier --source https://github.com/openstack/tempest.git " 
+    rally verify create-verifier --type tempest --name tempest-verifier --source /tmp/tempest " 
 
 ADD data /data
