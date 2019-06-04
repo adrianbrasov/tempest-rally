@@ -1,0 +1,20 @@
+{
+    "Dummy.dummy": [
+        {
+            "args": {
+                "sleep": 0.1
+            },
+            "runner": {
+                "type": "constant",
+                "times": 4,
+                "concurrency": 2
+            },
+            "context": {
+                "dummy_context": {
+                    "fail_setup": false,
+                    "fail_cleanup": false
+                }
+            }
+        }
+    ]
+}

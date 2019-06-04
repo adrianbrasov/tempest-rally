@@ -1,0 +1,11 @@
+  Dummy.dummy_random_fail_in_atomic:
+    -
+      args:
+        exception_probability: 0.5
+      runner:
+        type: "constant"
+        times: 100
+        concurrency: 10
+      sla:
+        failure_rate:
+          max: 0

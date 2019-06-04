@@ -1,27 +1,25 @@
 FROM ubuntu
 
+ADD Repos /Repos
+ADD data /data
+
 RUN apt-get update && apt-get install --yes sudo python python-pip vim wget git git-core tar && \
     pip install --upgrade pip 
 
-WORKDIR /tmp
+RUN /Repos/rally-1.5.1/install_rally.sh --target /rally_inst
 
-RUN wget https://github.com/openstack/rally/archive/1.5.1.tar.gz &&\
-    gzip -d /tmp/1.5.1.tar.gz && \
-    tar -xvf /tmp/1.5.1.tar && \
-    /tmp/rally-1.5.1/install_rally.sh --target /rally_inst &&\
-    git clone https://git.openstack.org/openstack/tempest &&\
-    git clone https://git.openstack.org/openstack/patrole &&\
-    git clone https://github.com/tungstenfabric/tungsten-tempest &&\
-    pip install tempest &&\
-    pip install -e patrole/
+WORKDIR /Repos/patrole
+RUN  pip install /Repos/tempest &&\
+     pip install -e .
 
-WORKDIR /tmp/tungsten-tempest
+WORKDIR /Repos/tungsten-tempest/
+RUN pip install -e .
 
-RUN pip install -e . &&\
-    /bin/bash -c ".  /rally_inst/bin/activate; \
+RUN pip install mock &&\
+    /bin/bash -c ". /rally_inst/bin/activate; \
     pip install rally-openstack; \
-    rally verify create-verifier --type tempest --name tempest-verifier --source /tmp/tempest; \
-    rally verify create-verifier --type tempest --name tungsten-tempest --source /tmp/tungsten-tempest/; \
-    rally verify create-verifier --type tempest --name patrole-verifier --source /tmp/patrole/; " 
+    pip install mock; \
+    rally verify create-verifier --type tempest --name tempest-verifier --source /Repos/tempest; \
+    rally verify create-verifier --type tempest --name tungsten-tempest --source /Repos/tungsten-tempest/; \
+    rally verify create-verifier --type tempest --name patrole-verifier --source /Repos/patrole/; " 
 
-ADD data /data
