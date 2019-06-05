@@ -18,8 +18,7 @@ RUN pip install -e .
 RUN pip install mock &&\
     /bin/bash -c ". /rally_inst/bin/activate; \
     pip install rally-openstack; \
-    pip install mock; \
-    rally verify create-verifier --type tempest --name tempest-verifier --source /Repos/tempest; \
-    rally verify create-verifier --type tempest --name tungsten-tempest --source /Repos/tungsten-tempest/; \
-    rally verify create-verifier --type tempest --name patrole-verifier --source /Repos/patrole/; " 
+    pip install mock; "
+
+RUN /bin/bash /data/tempest-verifiers.sh
 
