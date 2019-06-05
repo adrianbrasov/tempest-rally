@@ -1,4 +1,0 @@
----
-features:
-  - |
-    Add create_group_from_source to groups_client in the volume service library.

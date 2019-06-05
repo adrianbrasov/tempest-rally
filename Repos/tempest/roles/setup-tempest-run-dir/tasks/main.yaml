@@ -1,7 +1,0 @@
-- name: Set tempest as owner of Tempest run folder
-  file:
-    path: "{{devstack_base_dir}}/tempest"
-    owner: tempest
-    group: stack
-    recurse: yes
-  become: yes

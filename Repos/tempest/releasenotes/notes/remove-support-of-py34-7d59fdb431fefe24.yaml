@@ -1,5 +1,0 @@
----
-deprecations:
-  - |
-    Remove the support of python3.4, because in Ubuntu Xenial only
-    python3.5 is available (python3.4 is restricted to <= Mitaka).
