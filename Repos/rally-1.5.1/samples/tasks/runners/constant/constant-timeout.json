@@ -1,0 +1,15 @@
+{
+    "Dummy.dummy": [
+        {
+            "args": {
+                "sleep": 10
+            },
+            "runner": {
+                "type": "constant",
+                "times": 20,
+                "concurrency": 5,
+                "timeout": 5
+            }
+        }
+    ]
+}
