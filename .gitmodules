@@ -1,0 +1,9 @@
+[submodule "Repos/tempest"]
+	path = Repos/tempest
+	url = https://git.openstack.org/openstack/tempest
+[submodule "Repos/patrole"]
+	path = Repos/patrole
+	url = https://git.openstack.org/openstack/patrole
+[submodule "Repos/tungsten-tempest"]
+	path = Repos/tungsten-tempest
+	url = https://github.com/tungstenfabric/tungsten-tempest
