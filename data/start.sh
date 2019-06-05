@@ -3,7 +3,7 @@
 name=$1
 file=$2
 pattern=$3
-
+verifier=$4
 
 #functions
 create_deployment() {
@@ -29,6 +29,9 @@ create_deployment
 
 # source deployment 
 source ~/.rally/openrc
+
+# select verifier
+rally verify use-verifier --id $verifier
 
 # start verification
 verify_start
