@@ -8,6 +8,11 @@ RUN apt-get update && apt-get install --yes sudo python python-pip vim wget git 
 
 RUN /Repos/rally-1.5.1/install_rally.sh --target /rally_inst
 
+WORKDIR /Repos
+RUN git clone https://git.openstack.org/openstack/tempest &&\
+    git clone https://git.openstack.org/openstack/patrole &&\
+	git clone https://github.com/tungstenfabric/tungsten-tempest
+
 WORKDIR /Repos/tempest
 RUN pip install -e .
 
@@ -23,4 +28,3 @@ RUN pip install mock &&\
     pip install mock; "
 
 RUN /bin/bash /data/tempest-verifiers.sh
-
