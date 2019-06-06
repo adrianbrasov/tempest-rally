@@ -8,9 +8,11 @@ RUN apt-get update && apt-get install --yes sudo python python-pip vim wget git 
 
 RUN /Repos/rally-1.5.1/install_rally.sh --target /rally_inst
 
+WORKDIR /Repos/tempest
+RUN pip install -e .
+
 WORKDIR /Repos/patrole
-RUN  pip install /Repos/tempest &&\
-     pip install -e .
+RUN  pip install -e .
 
 WORKDIR /Repos/tungsten-tempest/
 RUN pip install -e .
