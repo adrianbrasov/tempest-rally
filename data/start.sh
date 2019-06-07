@@ -2,8 +2,8 @@
 
 name=$1
 file=$2
-pattern=$3
-verifier=$4
+verifier=$3
+test_cases=/data/test_cases.txt
 
 #functions
 create_deployment() {
@@ -11,15 +11,18 @@ create_deployment() {
 }
 
 verify_start() {
-    if [ -z $pattern ]
+    if [ `wc -w $test_cases | awk '{print $1}'` -lt 1 ]
       then 
         uuid=`rally verify start --detailed| \
         tee /dev/stderr | grep UUID |tail -1 | awk -F '[=)]' '{print $2}'`
     else 
-        uuid=`rally verify start --pattern $pattern --detailed | \
+        uuid=`rally verify start --load-list $test_cases --detailed | \
         tee /dev/stderr | grep UUID |tail -1 | awk -F '[=)]' '{print $2}'`
     fi
 }
+
+#populate test_cases file from env
+echo "$TEST_CASES" > /data/test_cases.txt
 
 # source rally
 . /rally_inst/bin/activate
