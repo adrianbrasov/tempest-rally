@@ -1,6 +1,6 @@
 {
     "openstack": {
-        "auth_url": "http://10.0.0.11:5000/v3/",
+        "auth_url": "http://controller:5000/v3/",
         "region_name": "RegionOne",
         "endpoint_type": "public",
         "admin": {
