@@ -10,7 +10,7 @@ Footer: Copyright\ \textcopyright\ 2019, Juniper Networks, Inc.
 ## Download
 
 ~~~
-git clone https://github.com/adrianbrasov/tempest-rally.git
+git clone https://github.com/adrianbrasov/rally-tempest-tungsten.git
 ~~~
 ---
 ## Configuration
@@ -38,8 +38,8 @@ git clone https://github.com/adrianbrasov/tempest-rally.git
 - navigate to the repo folder
 - build the Docker image
 ~~~
-cd tempest-rally
-docker build -t tempest-rally .
+cd rally-tempest-tungsten
+docker build -t rally-tempest-tungsten .
 ~~~
 ---
 
@@ -52,7 +52,7 @@ docker build -t tempest-rally .
     - **test_cases** - multi-line string - one test case per row
  - Run:
 ~~~bash
-docker run --rm --name tempest_rally \
+docker run --rm --name rally-tempest-tungsten \
             -v ${output_path}:/output -e TEST_CASES=\"${test_cases}\" \
             ${image_name} /bin/bash -c \
             '/data/start.sh \
